@@ -1,0 +1,23 @@
+---
+import Base from '@layouts/Base.astro';
+import ContentHeader from '@components/ContentHeader.astro';
+---
+
+<Base title="Thank You">
+  <div class="container">
+    <ContentHeader title="Thank You" />
+
+    <article class="prose m-auto">
+      <section>
+        <p>
+          Hi, thanks for the message!
+        </p>
+
+        <p>
+          Note that the form dispatches an email to me which is delivered on a best effort basis.
+          So if I don't get back to you, you may assume it was trapped by a spam filter somewhere.
+        </p>
+      </section>
+    </article>
+  </div>
+</Base>
