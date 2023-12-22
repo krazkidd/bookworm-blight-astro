@@ -1,0 +1,33 @@
+---
+---
+
+<form class="row gy-2 justify-center" data-static-form-name="contact">
+  <div class="lg:col-6">
+    <label class="mb-2 block" for="name">Name <span class="text-red-600">*</span></label>
+    <input id="name" name="name" class="form-input w-full" type="text" required />
+  </div>
+  <div class="lg:col-6">
+    <label class="mb-2 block" for="email">Email <span class="text-red-600">*</span></label>
+    <input id="email" name="email" class="form-input w-full" type="email" required />
+  </div>
+  <div class="col-12">
+    <label class="mb-2 block" for="subject">Subject</label>
+    <input
+      id="subject"
+      name="subject"
+      class="form-input w-full"
+      type="text"
+    />
+  </div>
+  <div class="col-12">
+    <label class="mb-2 block" for="message">Message <span class="text-red-600">*</span></label>
+    <textarea id="message" name="message" class="form-textarea w-full" rows="4" required></textarea>
+  </div>
+  <div class="col-12">
+    <div class="text-red-600 outline outline-red-600 bg-red-200 rounded-lg mb-2 p-2">
+      Note that the form dispatches an email to me which is delivered on a best effort basis.
+      So if I don't get back to you, you may assume it was trapped by a spam filter somewhere.
+    </div>
+    <button type="submit" class="btn btn-primary inline-block rounded-lg border font-semibold transition bg-primary text-white mt-2 px-6 py-3">Submit Now</button>
+  </div>
+</form>
