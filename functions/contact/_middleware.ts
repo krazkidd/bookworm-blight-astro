@@ -58,14 +58,14 @@ interface Environment {
 
 const mailChannelsMiddleware: PagesFunction<Environment> = async (context) => {
   return mailChannelsPlugin({
-    personalizations: ({ formData }) => {
-      const name = formData.get('name')?.toString();
-      const email = formData.get('email')?.toString();
+    personalizations: ({ formData, name }) => {
+      const userName = formData.get('name')?.toString();
+      const userEmail = formData.get('email')?.toString();
 
-      if (!name) {
+      if (!userName) {
         //throw new ValidationError('name');
         throw new Error('Missing name');
-      } else if (!email) {
+      } else if (!userEmail) {
         //throw new ValidationError('email');
         throw new Error('Missing email');
       }
@@ -81,8 +81,8 @@ const mailChannelsMiddleware: PagesFunction<Environment> = async (context) => {
           dkim_selector: 'mailchannels',
           dkim_private_key: context.env.DKIM_PRIVATE_KEY,
           reply_to: {
-            name: name,
-            email: email
+            name: userName,
+            email: userEmail
           },
         },
       ];
@@ -92,9 +92,9 @@ const mailChannelsMiddleware: PagesFunction<Environment> = async (context) => {
     }),
     subject: ({ formData, name }) => formData.get('subject')?.toString() || `${name} form submission`,
     content: ({ formData }) => {
-      const message = formData.get('message')?.toString();
+      const userMessage = formData.get('message')?.toString();
 
-      if (!message) {
+      if (!userMessage) {
         //throw new ValidationError('message');
         throw new Error('Missing message');
       }
@@ -102,7 +102,7 @@ const mailChannelsMiddleware: PagesFunction<Environment> = async (context) => {
       return [
         {
           type: 'text/plain',
-          value: message,
+          value: userMessage,
         },
       ];
     },
